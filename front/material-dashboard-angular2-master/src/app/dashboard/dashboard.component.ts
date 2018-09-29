@@ -12,12 +12,20 @@ import { User } from '../model/User';
 })
 export class DashboardComponent implements OnInit {
 
+<<<<<<< HEAD
   public responsePageFans: ResponseFacebook = new ResponseFacebook("", 0, new Date);
   public responsePageFansRemove: ResponseFacebook = new ResponseFacebook("", 0, new Date);
   public responsePageEngagedUsers: ResponseFacebook = new ResponseFacebook("", 0, new Date);
   public responsePageImpressions: ResponseFacebook = new ResponseFacebook("", 0, new Date);
   public users: User[];
   tokem: string = "EAAeMxmIdRA4BAFJMHNQOw00Dk6rs8ZB2lddZAuq4zYjOarcpBcXcB8CmjQgSO6fK17TaqhHzBUSydUNn6VIbvNJYtLIT2BmiXFQKIZATbk4eqZAtT0Wdwi4Baa0w4USr8iYdZADM7kp53hhgoQ53spxiTKLfL8nsM8dM07UWc3ZBpjA8fH05afZCZBuBJ0SvLjenaUIMXjbZB01eoO9tEgTBt";
+=======
+  public responsePageFans: ResponseFacebook = new ResponseFacebook("",0,new Date);
+  public responsePageFansRemove: ResponseFacebook = new ResponseFacebook("",0,new Date);
+  public responsePageEngagedUsers: ResponseFacebook = new ResponseFacebook("",0,new Date);
+  public responsePageImpressions: ResponseFacebook = new ResponseFacebook("",0,new Date);
+  tokem:string = "EAAeMxmIdRA4BAHZB9jaswZBLoQ1Lf0KJcmhPsXsQu4GXyZCiGtnZCJzMI19SF90luck5YOOlGCYwAmS7HjGvbaaNEGGGibPrEwpaY2HAco2mAbCZBaZAon57ZB4dCTH41pfZCDfBMWLlAZAhosybkBWZCF7bIz0ZB7Jmgfc5Gs5lpSEkxcv2ott9XjJeojDic8Y7ZBjyvOIa9R9KZAQZDZD";
+>>>>>>> 2232dfaf1e5d15316a616ca69a64dc3f3ac03eb6
   constructor(private http: Http) { }
 
 
@@ -25,13 +33,17 @@ export class DashboardComponent implements OnInit {
 
   teste() {
     let promise = new Promise((resolve, reject) => {
+<<<<<<< HEAD
       this.http.get("https://graph.facebook.com/v3.1/dsantospapelaria/insights?metric=page_fans&access_token=" + this.tokem)
+=======
+      this.http.get("https://graph.facebook.com/v3.1/dsantospapelaria/insights?metric=page_fans&access_token="+ this.tokem)
+>>>>>>> 2232dfaf1e5d15316a616ca69a64dc3f3ac03eb6
         .toPromise()
         .then(
           res => {
-            //console.log(res.json())
+            //console.log(res.json().data[0].name)
             this.responsePageFans = new ResponseFacebook(res.json().data[0].name, res.json().data[0].values[1].value, res.json().data[0].values[1].end_time);
-            //console.log(this.responsePageFans);
+            console.log(this.responsePageFans);
           }
         )
     });
@@ -41,9 +53,9 @@ export class DashboardComponent implements OnInit {
         .toPromise()
         .then(
           res => {
-            //console.log(res.json())
+
             this.responsePageFansRemove = new ResponseFacebook(res.json().data[0].name, res.json().data[0].values[1].value, res.json().data[0].values[1].end_time);
-            //console.log(this.responsePageFansRemove);
+            console.log(this.responsePageFansRemove);
           }
         )
     });
@@ -53,9 +65,9 @@ export class DashboardComponent implements OnInit {
         .toPromise()
         .then(
           res => {
-            //console.log(res.json())
+
             this.responsePageEngagedUsers = new ResponseFacebook(res.json().data[1].name, res.json().data[1].values[1].value, res.json().data[1].values[1].end_time);
-            //console.log(this.responsePageEngagedUsers);
+            console.log(this.responsePageEngagedUsers);
           }
         )
     });
@@ -65,9 +77,9 @@ export class DashboardComponent implements OnInit {
         .toPromise()
         .then(
           res => {
-            //console.log(res.json())
+
             this.responsePageImpressions = new ResponseFacebook(res.json().data[1].name, res.json().data[1].values[1].value, res.json().data[1].values[1].end_time);
-            //console.log(this.responsePageImpressions);
+            console.log(this.responsePageImpressions);
           }
         )
     });
@@ -149,14 +161,14 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
     this.teste();
-    const dataWeeklyRegisters: any = {
-      labels: ['S', 'T', 'Q', 'Q', 'S', 'S', 'D'],
+    const dataDailySalesChart: any = {
+      labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
       series: [
         [12, 17, 7, 17, 23, 18, 38]
       ]
     };
 
-    const optionsWeeklyRegisters: any = {
+    const optionsDailySalesChart: any = {
       lineSmooth: Chartist.Interpolation.cardinal({
         tension: 0
       }),
@@ -165,9 +177,9 @@ export class DashboardComponent implements OnInit {
       chartPadding: { top: 0, right: 0, bottom: 0, left: 0 },
     }
 
-    var WeeklyRegisters = new Chartist.Line('#WeeklyRegisters', dataWeeklyRegisters, optionsWeeklyRegisters);
+    var dailySalesChart = new Chartist.Line('#dailySalesChart', dataDailySalesChart, optionsDailySalesChart);
 
-    this.startAnimationForLineChart(WeeklyRegisters);
+    this.startAnimationForLineChart(dailySalesChart);
 
 
     /* ----------==========     Completed Tasks Chart initialization    ==========---------- */
@@ -197,14 +209,14 @@ export class DashboardComponent implements OnInit {
 
     /* ----------==========     Emails Subscription Chart initialization    ==========---------- */
 
-    var dataRegistersxQualifications = {
-      labels: ['Tecn.', 'Call C.', 'Suporte', 'Soft.', 'Gestão', 'Opera.', 'Admin.'],
+    var datawebsiteViewsChart = {
+      labels: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
       series: [
-        [542, 443, 320, 780, 553, 453, 326]
+        [542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 895]
 
       ]
     };
-    var optionsRegistersxQualifications = {
+    var optionswebsiteViewsChart = {
       axisX: {
         showGrid: false
       },
@@ -222,10 +234,10 @@ export class DashboardComponent implements OnInit {
         }
       }]
     ];
-    var RegistersxQualifications = new Chartist.Bar('#RegistersxQualifications', dataRegistersxQualifications, optionsRegistersxQualifications, responsiveOptions);
+    var websiteViewsChart = new Chartist.Bar('#websiteViewsChart', datawebsiteViewsChart, optionswebsiteViewsChart, responsiveOptions);
 
     //start animation for the Emails Subscription Chart
-    this.startAnimationForBarChart(RegistersxQualifications);
+    this.startAnimationForBarChart(websiteViewsChart);
   }
 
 }
