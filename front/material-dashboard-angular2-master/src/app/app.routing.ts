@@ -21,9 +21,7 @@ const routes: Routes =[
     // { path: 'dashboard',      component: DashboardComponent },
     // { path: 'user-profile',   component: UserProfileComponent },
     // { path: 'table-list',     component: TableListComponent },
-    // { path: 'icons',          component: IconsComponent },
     // { path: 'notifications',  component: NotificationsComponent },
-    // { path: 'upgrade',        component: UpgradeComponent },
     // { path: '',               redirectTo: 'dashboard', pathMatch: 'full' }
 ];
 
