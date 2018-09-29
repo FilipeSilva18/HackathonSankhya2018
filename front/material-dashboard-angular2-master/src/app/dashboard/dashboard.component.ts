@@ -21,7 +21,7 @@ export class DashboardComponent implements OnInit {
   public users: User[];
   public menssagens: Menssagem[];
   public cursos: Curso[];
-  tokem: string = "EAAeMxmIdRA4BAFJMHNQOw00Dk6rs8ZB2lddZAuq4zYjOarcpBcXcB8CmjQgSO6fK17TaqhHzBUSydUNn6VIbvNJYtLIT2BmiXFQKIZATbk4eqZAtT0Wdwi4Baa0w4USr8iYdZADM7kp53hhgoQ53spxiTKLfL8nsM8dM07UWc3ZBpjA8fH05afZCZBuBJ0SvLjenaUIMXjbZB01eoO9tEgTBt";
+  tokem: string = "EAAeMxmIdRA4BABlzLtkXZBoCsqFEHg308JsKqC8dZCEjaJZBdcxYSiEZA7ChkqtahUGzlLO9TfVMnHwDJlHog3KvyH7Wwu0D7XaWIpEHSEpAJm4FKlJKaog8OCbV4RQfZBqsYBt2zU6gBWWMUHezd1gaYXr93P2wscvvMZAfEXSw";
   constructor(private http: Http) { }
 
 
@@ -87,25 +87,8 @@ export class DashboardComponent implements OnInit {
     return this.http.get('https://hacka-sankhya.herokuapp.com/api/InstitutoProjetoVida/Action').toPromise().then((resposta: any) => resposta.json())
   }
 
-  getAllCursos() {
-    return this.http.get('https://hacka-sankhya.herokuapp.com/api/InstitutoProjetoVida/Course').toPromise().then((resposta: any) => resposta.json())
-  }
 
-  setCurso(curso:Curso){
-    this.http.post('https://hacka-sankhya.herokuapp.com/api/InstitutoProjetoVida/Course', {
-      name: 'filipe',
-      professor: 'filipe',
-      curso: 'matemagica'
-    })
-    .subscribe(
-      res => {
-        
-      },
-      err => {
-        console.log("Error occured");
-      }
-    );
-  }
+  
 
 
   startAnimationForLineChart(chart) {
@@ -167,9 +150,6 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this.teste();
 
-    this.setCurso(new Curso("Matematica", "Filipe", "nadaa"))
-  
-
     this.getAllUsers().then((users: User[]) => {
       this.users = users
       console.log(this.users)
@@ -190,14 +170,7 @@ export class DashboardComponent implements OnInit {
         })
 
 
-        this.getAllCursos().then((cursos: Curso[]) => {
-          this.cursos = cursos
-          console.log(this.cursos)
-    
-        })
-          .catch((param: any) => {
-            console.log("erro idiotaa")
-          })
+        
   
 
 

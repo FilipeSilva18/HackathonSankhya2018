@@ -1,0 +1,10 @@
+.img-fb {
+    position: absolute;
+    bottom: 0;
+    width: 80px;
+    height: 80px;
+    background-color: #aaa;
+    border-radius: 100%;
+    overflow: hidden;
+    position: relative;
+}

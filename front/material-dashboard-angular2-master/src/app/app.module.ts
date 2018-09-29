@@ -12,6 +12,8 @@ import { AppComponent } from './app.component';
 
 import { FacebookModule } from 'ngx-facebook';
 
+import {NgxPaginationModule} from 'ngx-pagination';
+
 
 import {
   AgmCoreModule
@@ -27,6 +29,7 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
     RouterModule,
     AppRoutingModule,
     FacebookModule.forRoot(),
+    NgxPaginationModule,
   ],
   declarations: [
     AppComponent,
