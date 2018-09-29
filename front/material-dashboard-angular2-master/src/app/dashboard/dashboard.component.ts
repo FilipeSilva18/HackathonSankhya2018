@@ -12,9 +12,9 @@ import { ResponseFacebook } from '../model/ResponseFacebook';
 export class DashboardComponent implements OnInit {
 
   public responsePageFans: ResponseFacebook = new ResponseFacebook("",0,new Date);
-  public responsePageFansRemove: ResponseFacebook;
-  public responsePageEngagedUsers: ResponseFacebook;
-  public responsePageImpressions: ResponseFacebook;
+  public responsePageFansRemove: ResponseFacebook = new ResponseFacebook("",0,new Date);
+  public responsePageEngagedUsers: ResponseFacebook = new ResponseFacebook("",0,new Date);
+  public responsePageImpressions: ResponseFacebook = new ResponseFacebook("",0,new Date);
   constructor(private http: Http) { }
 
 
