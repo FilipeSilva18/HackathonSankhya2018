@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import * as Chartist from 'chartist';
 import { Http } from '@angular/http';
 import { ResponseFacebook } from '../model/ResponseFacebook';
+import { User } from '../model/User';
 
 
 @Component({
@@ -11,11 +12,12 @@ import { ResponseFacebook } from '../model/ResponseFacebook';
 })
 export class DashboardComponent implements OnInit {
 
-  public responsePageFans: ResponseFacebook = new ResponseFacebook("",0,new Date);
-  public responsePageFansRemove: ResponseFacebook = new ResponseFacebook("",0,new Date);
-  public responsePageEngagedUsers: ResponseFacebook = new ResponseFacebook("",0,new Date);
-  public responsePageImpressions: ResponseFacebook = new ResponseFacebook("",0,new Date);
-  tokem:string = "EAAeMxmIdRA4BAF8p6C8UZCReHcbz4tnlUZAue4qWBjYuNZBMDjbZAsgwHNZCCqCSnQOL4IPlphzoBHZBCyxcKcTXZB1rEcfSQU5jDkqbOff2ev8tKYzI66ZAZBXSRQ2CzRP510W5uzno3ztsuEfST0ZBU1fkCxPHNYSNzKfUAZAZCTRoWqPOjslXAjQ3dFhEeO6uwgFg5teUB9teGfluznGcnolA";
+  public responsePageFans: ResponseFacebook = new ResponseFacebook("", 0, new Date);
+  public responsePageFansRemove: ResponseFacebook = new ResponseFacebook("", 0, new Date);
+  public responsePageEngagedUsers: ResponseFacebook = new ResponseFacebook("", 0, new Date);
+  public responsePageImpressions: ResponseFacebook = new ResponseFacebook("", 0, new Date);
+  public users: User[];
+  tokem: string = "EAAeMxmIdRA4BAFJMHNQOw00Dk6rs8ZB2lddZAuq4zYjOarcpBcXcB8CmjQgSO6fK17TaqhHzBUSydUNn6VIbvNJYtLIT2BmiXFQKIZATbk4eqZAtT0Wdwi4Baa0w4USr8iYdZADM7kp53hhgoQ53spxiTKLfL8nsM8dM07UWc3ZBpjA8fH05afZCZBuBJ0SvLjenaUIMXjbZB01eoO9tEgTBt";
   constructor(private http: Http) { }
 
 
@@ -23,7 +25,7 @@ export class DashboardComponent implements OnInit {
 
   teste() {
     let promise = new Promise((resolve, reject) => {
-      this.http.get("https://graph.facebook.com/v3.1/dsantospapelaria/insights?metric=page_fans&access_token= "+ this.tokem)
+      this.http.get("https://graph.facebook.com/v3.1/dsantospapelaria/insights?metric=page_fans&access_token=" + this.tokem)
         .toPromise()
         .then(
           res => {
@@ -66,6 +68,20 @@ export class DashboardComponent implements OnInit {
             //console.log(res.json())
             this.responsePageImpressions = new ResponseFacebook(res.json().data[1].name, res.json().data[1].values[1].value, res.json().data[1].values[1].end_time);
             //console.log(this.responsePageImpressions);
+          }
+        )
+    });
+
+
+  }
+
+  getAllUsers() {
+    let promise4 = new Promise((resolve, reject) => {
+      this.http.get("https://hacka-sankhya.herokuapp.com/api/InstitutoProjetoVida")
+        .toPromise()
+        .then(
+          res => {
+            console.log(res.json());
           }
         )
     });
