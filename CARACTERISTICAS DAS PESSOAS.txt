@@ -1,0 +1,60 @@
+HELPER
+
+Qualificações = {Call Center, Suporte }
+
+Profissões possíveis = {enfermeira, professor, assistente social, conselheiro, treinador pessoal }
+
+CaracterísticasPessoais = { comunicativa, solidária }
+
+-------------------------------------------------------------
+
+PERSUASOR
+
+Qualificações = {Carreira e Gestão, Administração}
+
+Profissões possíveis = {conselheior financeiro, executivo, advogado, corretor de imóveis, especialista em PR }
+
+CaracterísticasPessoais = { comunicativa, bons ouvintes, pacientes}
+
+-------------------------------------------------------------
+
+CRIADOR
+
+Qualificações = {tecnologia}
+
+Profissões possíveis = {designer gráfico, escritor freelancer, fotógrafo, músico, arquiteto }
+
+CaracterísticasPessoais = { introvertido , tímido, artista} 
+
+
+---------------------------------------------------------------------
+CONSTRUTOR
+Qualificações = {Operador}
+
+Profissões possíveis = {carpinteiro, policial, piloto, bombeiro, guarda florestal}
+
+CaracterísticasPessoais = { introvertido, ágil }
+
+-----------------------------------------------------------------------
+ORGANIZADOR
+
+Qualificações = {Operador}
+
+Profissões possíveis = { gerente, programador, contador, paralegal, bibliotecário }
+
+CaracterísticasPessoais = { tímida, introvertida, raciocínio lógico, desenvolvimento ágil, calculadora humana }
+
+-----------------------------------------------------------------------
+PENSADOR
+
+Qualificações = {Operador}
+
+Profissões possíveis = { físico, engenheiro, cientista social, profesosr universitário, investigador de mercado }
+
+CaracterísticasPessoais = { tímida, introvertida, raciocínio lógico, desenvolvimento ágil, calculadora humana, cientista, responsável, exatas, pontual }
+
+
+
+
+
+		

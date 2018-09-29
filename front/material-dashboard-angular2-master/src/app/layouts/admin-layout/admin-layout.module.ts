@@ -5,7 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminLayoutRoutes } from './admin-layout.routing';
 import { DashboardComponent } from '../../dashboard/dashboard.component';
 import { UserProfileComponent } from '../../user-profile/user-profile.component';
-import { TableListComponent } from '../../table-list/table-list.component';
+import { RegistrationsListComponent } from '../../registrations-list/registrations-list.component';
 import { NotificationsComponent } from '../../notifications/notifications.component';
 
 import {
@@ -27,7 +27,7 @@ import {
   declarations: [
     DashboardComponent,
     UserProfileComponent,
-    TableListComponent,
+    RegistrationsListComponent,
     NotificationsComponent,
   ]
 })
