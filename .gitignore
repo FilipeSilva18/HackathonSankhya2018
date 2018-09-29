@@ -6,7 +6,7 @@
 /out-tsc
 
 # dependencies
-/node_modules
+/front/material-dashboard-angular2-master/node_modules
 
 # IDEs and editors
 /.idea
