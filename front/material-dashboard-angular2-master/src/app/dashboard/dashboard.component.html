@@ -8,11 +8,11 @@
                             <i class="material-icons">thumb_up</i>
                         </div>
                         <p class="card-category">Curtidas</p>
-                        <h3 class="card-title">123</h3>
+                        <h3 class="card-title">{{responsePageFans.value}}</h3>
                     </div>
                     <div class="card-footer">
                         <div class="stats">
-                            <i class="material-icons">date_range</i> Últimos 7 dias
+                            <i class="material-icons">info</i> Total de curtidas
                         </div>
                     </div>
                 </div>
@@ -24,11 +24,11 @@
                             <i class="material-icons">thumb_down</i>
                         </div>
                         <p class="card-category">Descurtidas</p>
-                        <h3 class="card-title">123</h3>
+                        <h3 class="card-title">{{responsePageFansRemove.value}}</h3>
                     </div>
                     <div class="card-footer">
                         <div class="stats">
-                            <i class="material-icons">date_range</i> Últimos 7 dias
+                            <i class="material-icons">date_range</i> Últimas 24 horas
                         </div>
                     </div>
                 </div>
@@ -40,7 +40,7 @@
                             <i class="fa fa-magnet"></i>
                         </div>
                         <p class="card-category">Engajamento</p>
-                        <h3 class="card-title">123</h3>
+                        <h3 class="card-title">{{responsePageEngagedUsers.value}}</h3>
                     </div>
                     <div class="card-footer">
                         <div class="stats">
@@ -56,7 +56,7 @@
                             <i class="material-icons">insert_chart</i>
                         </div>
                         <p class="card-category">Visualizações</p>
-                        <h3 class="card-title">123</h3>
+                        <h3 class="card-title">{{responsePageImpressions.value}}</h3>
                     </div>
                     <div class="card-footer">
                         <div class="stats">
@@ -67,36 +67,38 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-5 mx-auto">
+            <div class="col-md-6">
                 <div class="card card-chart">
                     <div class="card-header card-header-success">
-                        <div class="ct-chart" id="dailySalesChart"></div>
+                        <div class="ct-chart" id="WeeklyRegisters"></div>
                     </div>
                     <div class="card-body">
                         <h4 class="card-title">Inscrições realizadas</h4>
+                    </div>
+                    <div class="card-footer">
                         <p class="card-category">
-                            Inscrições realizadas nos últimos 7 dias.</p>
+                            <i class="material-icons">info</i> Inscrições realizadas nos últimos 7 dias.
+                        </p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-5 mx-auto">
+            <div class="col-md-6">
                 <div class="card card-chart">
                     <div class="card-header card-header-warning">
-                        <div class="ct-chart" id="websiteViewsChart"></div>
+                        <div class="ct-chart" id="RegistersxQualifications"></div>
                     </div>
                     <div class="card-body">
-                        <h4 class="card-title">Email Subscriptions</h4>
-                        <p class="card-category">Last Campaign Performance</p>
+                        <h4 class="card-title">Inscrições x Qualificação</h4>
                     </div>
                     <div class="card-footer">
-                        <div class="stats">
-                            <i class="material-icons">access_time</i> campaign sent 2 days ago
-                        </div>
+                        <p class="card-category">
+                            <i class="material-icons">info</i> Relação de inscrições por qualificação.
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row"  *ngIf="false">
             <div class="col-md-6">
                 <div class="card card-chart">
                     <div class="card-header card-header-danger">

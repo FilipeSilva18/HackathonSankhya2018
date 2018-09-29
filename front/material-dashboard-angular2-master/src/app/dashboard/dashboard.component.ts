@@ -27,9 +27,9 @@ export class DashboardComponent implements OnInit {
         .toPromise()
         .then(
           res => {
-            //console.log(res.json().data[0].name)
+            //console.log(res.json())
             this.responsePageFans = new ResponseFacebook(res.json().data[0].name, res.json().data[0].values[1].value, res.json().data[0].values[1].end_time);
-            console.log(this.responsePageFans);
+            //console.log(this.responsePageFans);
           }
         )
     });
@@ -39,9 +39,9 @@ export class DashboardComponent implements OnInit {
         .toPromise()
         .then(
           res => {
-
+            //console.log(res.json())
             this.responsePageFansRemove = new ResponseFacebook(res.json().data[0].name, res.json().data[0].values[1].value, res.json().data[0].values[1].end_time);
-            console.log(this.responsePageFansRemove);
+            //console.log(this.responsePageFansRemove);
           }
         )
     });
@@ -51,9 +51,9 @@ export class DashboardComponent implements OnInit {
         .toPromise()
         .then(
           res => {
-
+            //console.log(res.json())
             this.responsePageEngagedUsers = new ResponseFacebook(res.json().data[1].name, res.json().data[1].values[1].value, res.json().data[1].values[1].end_time);
-            console.log(this.responsePageEngagedUsers);
+            //console.log(this.responsePageEngagedUsers);
           }
         )
     });
@@ -63,9 +63,9 @@ export class DashboardComponent implements OnInit {
         .toPromise()
         .then(
           res => {
-
+            //console.log(res.json())
             this.responsePageImpressions = new ResponseFacebook(res.json().data[1].name, res.json().data[1].values[1].value, res.json().data[1].values[1].end_time);
-            console.log(this.responsePageImpressions);
+            //console.log(this.responsePageImpressions);
           }
         )
     });
@@ -133,14 +133,14 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
     this.teste();
-    const dataDailySalesChart: any = {
-      labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
+    const dataWeeklyRegisters: any = {
+      labels: ['S', 'T', 'Q', 'Q', 'S', 'S', 'D'],
       series: [
         [12, 17, 7, 17, 23, 18, 38]
       ]
     };
 
-    const optionsDailySalesChart: any = {
+    const optionsWeeklyRegisters: any = {
       lineSmooth: Chartist.Interpolation.cardinal({
         tension: 0
       }),
@@ -149,9 +149,9 @@ export class DashboardComponent implements OnInit {
       chartPadding: { top: 0, right: 0, bottom: 0, left: 0 },
     }
 
-    var dailySalesChart = new Chartist.Line('#dailySalesChart', dataDailySalesChart, optionsDailySalesChart);
+    var WeeklyRegisters = new Chartist.Line('#WeeklyRegisters', dataWeeklyRegisters, optionsWeeklyRegisters);
 
-    this.startAnimationForLineChart(dailySalesChart);
+    this.startAnimationForLineChart(WeeklyRegisters);
 
 
     /* ----------==========     Completed Tasks Chart initialization    ==========---------- */
@@ -181,14 +181,14 @@ export class DashboardComponent implements OnInit {
 
     /* ----------==========     Emails Subscription Chart initialization    ==========---------- */
 
-    var datawebsiteViewsChart = {
-      labels: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
+    var dataRegistersxQualifications = {
+      labels: ['Tecn.', 'Call C.', 'Suporte', 'Soft.', 'Gestão', 'Opera.', 'Admin.'],
       series: [
-        [542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 895]
+        [542, 443, 320, 780, 553, 453, 326]
 
       ]
     };
-    var optionswebsiteViewsChart = {
+    var optionsRegistersxQualifications = {
       axisX: {
         showGrid: false
       },
@@ -206,10 +206,10 @@ export class DashboardComponent implements OnInit {
         }
       }]
     ];
-    var websiteViewsChart = new Chartist.Bar('#websiteViewsChart', datawebsiteViewsChart, optionswebsiteViewsChart, responsiveOptions);
+    var RegistersxQualifications = new Chartist.Bar('#RegistersxQualifications', dataRegistersxQualifications, optionsRegistersxQualifications, responsiveOptions);
 
     //start animation for the Emails Subscription Chart
-    this.startAnimationForBarChart(websiteViewsChart);
+    this.startAnimationForBarChart(RegistersxQualifications);
   }
 
 }
