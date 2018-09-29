@@ -15,6 +15,7 @@ export class DashboardComponent implements OnInit {
   public responsePageFansRemove: ResponseFacebook = new ResponseFacebook("",0,new Date);
   public responsePageEngagedUsers: ResponseFacebook = new ResponseFacebook("",0,new Date);
   public responsePageImpressions: ResponseFacebook = new ResponseFacebook("",0,new Date);
+  tokem:string = "EAAeMxmIdRA4BAF8p6C8UZCReHcbz4tnlUZAue4qWBjYuNZBMDjbZAsgwHNZCCqCSnQOL4IPlphzoBHZBCyxcKcTXZB1rEcfSQU5jDkqbOff2ev8tKYzI66ZAZBXSRQ2CzRP510W5uzno3ztsuEfST0ZBU1fkCxPHNYSNzKfUAZAZCTRoWqPOjslXAjQ3dFhEeO6uwgFg5teUB9teGfluznGcnolA";
   constructor(private http: Http) { }
 
 
@@ -22,7 +23,7 @@ export class DashboardComponent implements OnInit {
 
   teste() {
     let promise = new Promise((resolve, reject) => {
-      this.http.get("https://graph.facebook.com/v3.1/dsantospapelaria/insights?metric=page_fans&access_token=EAAeMxmIdRA4BAIkbaTvra6wQGxHwrr7IinJWZBTScwdy69h1LYaPoVrAvS8Y8xY6p7Xek8uza625tc14DkFmkLKoPlQCSxZCTLk7fVnWtYZCcJQfVcZAvY42hfzGaUoYgrKXyKH2XkhcKAzUZAQsaZB1hikK6nLyg0b9yPYGz9ghpzwlCo1sGdM6MRbapAhsVBbCfitz138AAQH4pjYXDw")
+      this.http.get("https://graph.facebook.com/v3.1/dsantospapelaria/insights?metric=page_fans&access_token= "+ this.tokem)
         .toPromise()
         .then(
           res => {
@@ -34,7 +35,7 @@ export class DashboardComponent implements OnInit {
     });
 
     let promise2 = new Promise((resolve, reject) => {
-      this.http.get("https://graph.facebook.com/v3.1/dsantospapelaria/insights?metric=page_fan_removes&access_token=EAAeMxmIdRA4BAIkbaTvra6wQGxHwrr7IinJWZBTScwdy69h1LYaPoVrAvS8Y8xY6p7Xek8uza625tc14DkFmkLKoPlQCSxZCTLk7fVnWtYZCcJQfVcZAvY42hfzGaUoYgrKXyKH2XkhcKAzUZAQsaZB1hikK6nLyg0b9yPYGz9ghpzwlCo1sGdM6MRbapAhsVBbCfitz138AAQH4pjYXDw")
+      this.http.get("https://graph.facebook.com/v3.1/dsantospapelaria/insights?metric=page_fan_removes&access_token=" + this.tokem)
         .toPromise()
         .then(
           res => {
@@ -46,7 +47,7 @@ export class DashboardComponent implements OnInit {
     });
 
     let promise3 = new Promise((resolve, reject) => {
-      this.http.get("https://graph.facebook.com/v3.1/dsantospapelaria/insights?metric=page_engaged_users&access_token=EAAeMxmIdRA4BAIkbaTvra6wQGxHwrr7IinJWZBTScwdy69h1LYaPoVrAvS8Y8xY6p7Xek8uza625tc14DkFmkLKoPlQCSxZCTLk7fVnWtYZCcJQfVcZAvY42hfzGaUoYgrKXyKH2XkhcKAzUZAQsaZB1hikK6nLyg0b9yPYGz9ghpzwlCo1sGdM6MRbapAhsVBbCfitz138AAQH4pjYXDw")
+      this.http.get("https://graph.facebook.com/v3.1/dsantospapelaria/insights?metric=page_engaged_users&access_token=" + this.tokem)
         .toPromise()
         .then(
           res => {
@@ -58,7 +59,7 @@ export class DashboardComponent implements OnInit {
     });
 
     let promise4 = new Promise((resolve, reject) => {
-      this.http.get("https://graph.facebook.com/v3.1/dsantospapelaria/insights?metric=page_impressions&access_token=EAAeMxmIdRA4BAIkbaTvra6wQGxHwrr7IinJWZBTScwdy69h1LYaPoVrAvS8Y8xY6p7Xek8uza625tc14DkFmkLKoPlQCSxZCTLk7fVnWtYZCcJQfVcZAvY42hfzGaUoYgrKXyKH2XkhcKAzUZAQsaZB1hikK6nLyg0b9yPYGz9ghpzwlCo1sGdM6MRbapAhsVBbCfitz138AAQH4pjYXDw")
+      this.http.get("https://graph.facebook.com/v3.1/dsantospapelaria/insights?metric=page_impressions&access_token=" + this.tokem)
         .toPromise()
         .then(
           res => {
