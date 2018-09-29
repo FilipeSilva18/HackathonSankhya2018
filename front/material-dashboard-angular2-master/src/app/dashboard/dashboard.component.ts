@@ -12,20 +12,12 @@ import { User } from '../model/User';
 })
 export class DashboardComponent implements OnInit {
 
-<<<<<<< HEAD
   public responsePageFans: ResponseFacebook = new ResponseFacebook("", 0, new Date);
   public responsePageFansRemove: ResponseFacebook = new ResponseFacebook("", 0, new Date);
   public responsePageEngagedUsers: ResponseFacebook = new ResponseFacebook("", 0, new Date);
   public responsePageImpressions: ResponseFacebook = new ResponseFacebook("", 0, new Date);
   public users: User[];
   tokem: string = "EAAeMxmIdRA4BAFJMHNQOw00Dk6rs8ZB2lddZAuq4zYjOarcpBcXcB8CmjQgSO6fK17TaqhHzBUSydUNn6VIbvNJYtLIT2BmiXFQKIZATbk4eqZAtT0Wdwi4Baa0w4USr8iYdZADM7kp53hhgoQ53spxiTKLfL8nsM8dM07UWc3ZBpjA8fH05afZCZBuBJ0SvLjenaUIMXjbZB01eoO9tEgTBt";
-=======
-  public responsePageFans: ResponseFacebook = new ResponseFacebook("",0,new Date);
-  public responsePageFansRemove: ResponseFacebook = new ResponseFacebook("",0,new Date);
-  public responsePageEngagedUsers: ResponseFacebook = new ResponseFacebook("",0,new Date);
-  public responsePageImpressions: ResponseFacebook = new ResponseFacebook("",0,new Date);
-  tokem:string = "EAAeMxmIdRA4BAHZB9jaswZBLoQ1Lf0KJcmhPsXsQu4GXyZCiGtnZCJzMI19SF90luck5YOOlGCYwAmS7HjGvbaaNEGGGibPrEwpaY2HAco2mAbCZBaZAon57ZB4dCTH41pfZCDfBMWLlAZAhosybkBWZCF7bIz0ZB7Jmgfc5Gs5lpSEkxcv2ott9XjJeojDic8Y7ZBjyvOIa9R9KZAQZDZD";
->>>>>>> 2232dfaf1e5d15316a616ca69a64dc3f3ac03eb6
   constructor(private http: Http) { }
 
 
@@ -33,11 +25,7 @@ export class DashboardComponent implements OnInit {
 
   teste() {
     let promise = new Promise((resolve, reject) => {
-<<<<<<< HEAD
       this.http.get("https://graph.facebook.com/v3.1/dsantospapelaria/insights?metric=page_fans&access_token=" + this.tokem)
-=======
-      this.http.get("https://graph.facebook.com/v3.1/dsantospapelaria/insights?metric=page_fans&access_token="+ this.tokem)
->>>>>>> 2232dfaf1e5d15316a616ca69a64dc3f3ac03eb6
         .toPromise()
         .then(
           res => {
@@ -160,6 +148,7 @@ export class DashboardComponent implements OnInit {
   };
   ngOnInit() {
     /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
+    this.getAllUsers();
     this.teste();
     const dataDailySalesChart: any = {
       labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
