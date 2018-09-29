@@ -10,6 +10,9 @@ import { ComponentsModule } from './components/components.module';
 
 import { AppComponent } from './app.component';
 
+import { FacebookModule } from 'ngx-facebook';
+
+
 import {
   AgmCoreModule
 } from '@agm/core';
@@ -23,6 +26,7 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
     ComponentsModule,
     RouterModule,
     AppRoutingModule,
+    FacebookModule.forRoot(),
   ],
   declarations: [
     AppComponent,
