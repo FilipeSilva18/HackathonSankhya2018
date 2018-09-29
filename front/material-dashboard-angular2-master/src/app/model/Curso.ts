@@ -1,6 +1,6 @@
 export class Curso {
     constructor(
-        public nome: string,
+        public name: string,
         public professor: string,
         public descricao: string,
     ){}

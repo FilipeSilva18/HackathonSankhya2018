@@ -3,6 +3,8 @@ import * as Chartist from 'chartist';
 import { Http } from '@angular/http';
 import { ResponseFacebook } from '../model/ResponseFacebook';
 import { User } from '../model/User';
+import { Menssagem } from '../model/Menssagens';
+import { Curso } from '../model/Curso';
 
 
 @Component({
@@ -17,6 +19,8 @@ export class DashboardComponent implements OnInit {
   public responsePageEngagedUsers: ResponseFacebook = new ResponseFacebook("", 0, new Date);
   public responsePageImpressions: ResponseFacebook = new ResponseFacebook("", 0, new Date);
   public users: User[];
+  public menssagens: Menssagem[];
+  public cursos: Curso[];
   tokem: string = "EAAeMxmIdRA4BAFJMHNQOw00Dk6rs8ZB2lddZAuq4zYjOarcpBcXcB8CmjQgSO6fK17TaqhHzBUSydUNn6VIbvNJYtLIT2BmiXFQKIZATbk4eqZAtT0Wdwi4Baa0w4USr8iYdZADM7kp53hhgoQ53spxiTKLfL8nsM8dM07UWc3ZBpjA8fH05afZCZBuBJ0SvLjenaUIMXjbZB01eoO9tEgTBt";
   constructor(private http: Http) { }
 
@@ -76,17 +80,31 @@ export class DashboardComponent implements OnInit {
   }
 
   getAllUsers() {
-    let promise4 = new Promise((resolve, reject) => {
-      this.http.get("https://hacka-sankhya.herokuapp.com/api/InstitutoProjetoVida")
-        .toPromise()
-        .then(
-          res => {
-            console.log(res.json());
-          }
-        )
-    });
+    return this.http.get('https://hacka-sankhya.herokuapp.com/api/InstitutoProjetoVida').toPromise().then((resposta: any) => resposta.json())
+  }
 
+  getAllMenssagens() {
+    return this.http.get('https://hacka-sankhya.herokuapp.com/api/InstitutoProjetoVida/Action').toPromise().then((resposta: any) => resposta.json())
+  }
 
+  getAllCursos() {
+    return this.http.get('https://hacka-sankhya.herokuapp.com/api/InstitutoProjetoVida/Course').toPromise().then((resposta: any) => resposta.json())
+  }
+
+  setCurso(curso:Curso){
+    this.http.post('https://hacka-sankhya.herokuapp.com/api/InstitutoProjetoVida/Course', {
+      name: 'filipe',
+      professor: 'filipe',
+      curso: 'matemagica'
+    })
+    .subscribe(
+      res => {
+        
+      },
+      err => {
+        console.log("Error occured");
+      }
+    );
   }
 
 
@@ -147,86 +165,120 @@ export class DashboardComponent implements OnInit {
     seq2 = 0;
   };
   ngOnInit() {
-    /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
-    this.getAllUsers();
     this.teste();
-    const dataDailySalesChart: any = {
-      labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
-      series: [
-        [12, 17, 7, 17, 23, 18, 38]
-      ]
-    };
 
-    const optionsDailySalesChart: any = {
-      lineSmooth: Chartist.Interpolation.cardinal({
-        tension: 0
-      }),
-      low: 0,
-      high: 50, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
-      chartPadding: { top: 0, right: 0, bottom: 0, left: 0 },
+    this.setCurso(new Curso("Matematica", "Filipe", "nadaa"))
+  
+
+    this.getAllUsers().then((users: User[]) => {
+      this.users = users
+      console.log(this.users)
+
+    })
+      .catch((param: any) => {
+        console.log("erro idiotaa")
+      })
+
+      
+      this.getAllMenssagens().then((menssagens: Menssagem[]) => {
+        this.menssagens = menssagens
+        console.log(this.menssagens)
+  
+      })
+        .catch((param: any) => {
+          console.log("erro idiotaa")
+        })
+
+
+        this.getAllCursos().then((cursos: Curso[]) => {
+          this.cursos = cursos
+          console.log(this.cursos)
+    
+        })
+          .catch((param: any) => {
+            console.log("erro idiotaa")
+          })
+  
+
+
+
+const dataDailySalesChart: any = {
+  labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
+  series: [
+    [12, 17, 7, 17, 23, 18, 38]
+  ]
+};
+
+const optionsDailySalesChart: any = {
+  lineSmooth: Chartist.Interpolation.cardinal({
+    tension: 0
+  }),
+  low: 0,
+  high: 50, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
+  chartPadding: { top: 0, right: 0, bottom: 0, left: 0 },
+}
+
+var dailySalesChart = new Chartist.Line('#dailySalesChart', dataDailySalesChart, optionsDailySalesChart);
+
+this.startAnimationForLineChart(dailySalesChart);
+
+
+/* ----------==========     Completed Tasks Chart initialization    ==========---------- */
+
+const dataCompletedTasksChart: any = {
+  labels: ['12p', '3p', '6p', '9p', '12p', '3a', '6a', '9a'],
+  series: [
+    [230, 750, 450, 300, 280, 240, 200, 190]
+  ]
+};
+
+const optionsCompletedTasksChart: any = {
+  lineSmooth: Chartist.Interpolation.cardinal({
+    tension: 0
+  }),
+  low: 0,
+  high: 1000, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
+  chartPadding: { top: 0, right: 0, bottom: 0, left: 0 }
+}
+
+var completedTasksChart = new Chartist.Line('#completedTasksChart', dataCompletedTasksChart, optionsCompletedTasksChart);
+
+// start animation for the Completed Tasks Chart - Line Chart
+this.startAnimationForLineChart(completedTasksChart);
+
+
+
+/* ----------==========     Emails Subscription Chart initialization    ==========---------- */
+
+var datawebsiteViewsChart = {
+  labels: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
+  series: [
+    [542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 895]
+
+  ]
+};
+var optionswebsiteViewsChart = {
+  axisX: {
+    showGrid: false
+  },
+  low: 0,
+  high: 1000,
+  chartPadding: { top: 0, right: 5, bottom: 0, left: 0 }
+};
+var responsiveOptions: any[] = [
+  ['screen and (max-width: 640px)', {
+    seriesBarDistance: 5,
+    axisX: {
+      labelInterpolationFnc: function (value) {
+        return value[0];
+      }
     }
+  }]
+];
+var websiteViewsChart = new Chartist.Bar('#websiteViewsChart', datawebsiteViewsChart, optionswebsiteViewsChart, responsiveOptions);
 
-    var dailySalesChart = new Chartist.Line('#dailySalesChart', dataDailySalesChart, optionsDailySalesChart);
-
-    this.startAnimationForLineChart(dailySalesChart);
-
-
-    /* ----------==========     Completed Tasks Chart initialization    ==========---------- */
-
-    const dataCompletedTasksChart: any = {
-      labels: ['12p', '3p', '6p', '9p', '12p', '3a', '6a', '9a'],
-      series: [
-        [230, 750, 450, 300, 280, 240, 200, 190]
-      ]
-    };
-
-    const optionsCompletedTasksChart: any = {
-      lineSmooth: Chartist.Interpolation.cardinal({
-        tension: 0
-      }),
-      low: 0,
-      high: 1000, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
-      chartPadding: { top: 0, right: 0, bottom: 0, left: 0 }
-    }
-
-    var completedTasksChart = new Chartist.Line('#completedTasksChart', dataCompletedTasksChart, optionsCompletedTasksChart);
-
-    // start animation for the Completed Tasks Chart - Line Chart
-    this.startAnimationForLineChart(completedTasksChart);
-
-
-
-    /* ----------==========     Emails Subscription Chart initialization    ==========---------- */
-
-    var datawebsiteViewsChart = {
-      labels: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
-      series: [
-        [542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 895]
-
-      ]
-    };
-    var optionswebsiteViewsChart = {
-      axisX: {
-        showGrid: false
-      },
-      low: 0,
-      high: 1000,
-      chartPadding: { top: 0, right: 5, bottom: 0, left: 0 }
-    };
-    var responsiveOptions: any[] = [
-      ['screen and (max-width: 640px)', {
-        seriesBarDistance: 5,
-        axisX: {
-          labelInterpolationFnc: function (value) {
-            return value[0];
-          }
-        }
-      }]
-    ];
-    var websiteViewsChart = new Chartist.Bar('#websiteViewsChart', datawebsiteViewsChart, optionswebsiteViewsChart, responsiveOptions);
-
-    //start animation for the Emails Subscription Chart
-    this.startAnimationForBarChart(websiteViewsChart);
+//start animation for the Emails Subscription Chart
+this.startAnimationForBarChart(websiteViewsChart);
   }
 
 }
