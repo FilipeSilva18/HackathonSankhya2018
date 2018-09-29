@@ -11,10 +11,10 @@ import { ResponseFacebook } from '../model/ResponseFacebook';
 })
 export class DashboardComponent implements OnInit {
 
-  responsePageFans: ResponseFacebook;
-  responsePageFansRemove: ResponseFacebook;
-  responsePageEngagedUsers: ResponseFacebook;
-  responsePageImpressions: ResponseFacebook;
+  public responsePageFans: ResponseFacebook = new ResponseFacebook("",0,new Date);
+  public responsePageFansRemove: ResponseFacebook;
+  public responsePageEngagedUsers: ResponseFacebook;
+  public responsePageImpressions: ResponseFacebook;
   constructor(private http: Http) { }
 
 
@@ -27,7 +27,7 @@ export class DashboardComponent implements OnInit {
         .then(
           res => {
             //console.log(res.json().data[0].name)
-            this.responsePageFans = new ResponseFacebook(res.json().data[0].name, res.json().data[0].values.value, res.json().data[0].values[1].end_time);
+            this.responsePageFans = new ResponseFacebook(res.json().data[0].name, res.json().data[0].values[1].value, res.json().data[0].values[1].end_time);
             console.log(this.responsePageFans);
           }
         )
